@@ -44,8 +44,7 @@ public class DatabaseLoader implements ApplicationRunner{
                 new User("albertqerimi", "Albert",  "Qerimi", "password", new String[] {"ROLE_USER"})
         );
         users.save(students);
-        users.save(new User("zia", "khalid", "zia566", "123", new String[] {"ROLE_USER", "ROLE_ADMIN"}));
-
+        users.save(new User("zia", "khalid", "zia566", "123456", new String[] {"ROLE_USER", "ROLE_ADMIN"}));
 
         ArrayList<Topic> bunchOfTopic = new ArrayList<Topic>();
 
