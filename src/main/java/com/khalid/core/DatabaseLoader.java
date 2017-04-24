@@ -48,11 +48,18 @@ public class DatabaseLoader implements ApplicationRunner{
 
         ArrayList<Topic> bunchOfTopic = new ArrayList<Topic>();
 
-        String[] buzzWords = {"Inner Class", "Exception handling", "Collection", "Generics", "Development", "JVM"};
+        String[] javaBuzzWords = {"Inner Class", "Exception handling", "Collection", "Generics", "Development", "JVM"};
+        String[] androidBuzzWords = {"Activity", "Content Provider", "Services", "Braodcase Reciver", "Fragment"};
 
         IntStream.range(0,10).forEach(it -> {
-            String buzzWord = buzzWords[it % buzzWords.length];
-            Topic topic = new Topic(buzzWord, (it % buzzWords.length));
+            String buzzWord = javaBuzzWords[it % javaBuzzWords.length];
+            Topic topic = new Topic(TopicType.JAVA, buzzWord, (it % javaBuzzWords.length));
+            bunchOfTopic.add(topic);
+        });
+
+        IntStream.range(0,10).forEach(it -> {
+            String buzzWord = androidBuzzWords[it % androidBuzzWords.length];
+            Topic topic = new Topic(TopicType.ANDROID, buzzWord, (it % androidBuzzWords.length));
             bunchOfTopic.add(topic);
         });
 

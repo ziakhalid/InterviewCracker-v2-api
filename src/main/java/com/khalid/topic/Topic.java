@@ -1,12 +1,16 @@
 package com.khalid.topic;
 
 import com.khalid.core.BaseEntitiy;
+import com.khalid.core.TopicType;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Entity
 public class Topic extends BaseEntitiy{
-
+    @Enumerated(EnumType.STRING)
+    private TopicType topicType;
     private String name;
     private int questionCount;
 
@@ -14,10 +18,19 @@ public class Topic extends BaseEntitiy{
         super();
     }
 
-    public Topic(String name, int questionCount) {
+    public Topic(TopicType topicType, String name, int questionCount) {
         this();
+        this.topicType = topicType;
         this.name = name;
         this.questionCount = questionCount;
+    }
+
+    public TopicType getTopicType() {
+        return topicType;
+    }
+
+    public void setTopicType(TopicType topicType) {
+        this.topicType = topicType;
     }
 
     public String getName() {
