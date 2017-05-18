@@ -1,6 +1,7 @@
 package com.khalid.core;
 
-import com.khalid.question.simple.SingleOptTypeQuestion;
+import com.khalid.question.simple.Question;
+import com.khalid.question.simple.SingleOptonQue;
 import com.khalid.topic.Topic;
 import com.khalid.topic.TopicRepository;
 import com.khalid.user.User;
@@ -56,30 +57,43 @@ public class DatabaseLoader implements ApplicationRunner{
         String[] queBuzzWords = {"What is inner class", "What is Generics", "What is volatile KeyWord"};
         String[] ansBuzzWords = {"This  is inner class", "This is Generics", "This is volatile KeyWord"};
 
-        List<SingleOptTypeQuestion> singleOptTypeQuestions = new ArrayList<>();
+        List<Question> questions = new ArrayList<>();
 
         IntStream.range(0,10).forEach(it -> {
             String queBuzz = queBuzzWords[it % queBuzzWords.length];
             String ansBuzz = ansBuzzWords[it % ansBuzzWords.length];
 
-            SingleOptTypeQuestion singleOptTypeQuestion = new SingleOptTypeQuestion(queBuzz, ansBuzz);
-            singleOptTypeQuestions.add(singleOptTypeQuestion);
+            SingleOptonQue singleOptonQue = new SingleOptonQue(queBuzz, ansBuzz);
+            Question question = new Question(QuestionType.SINGLE, singleOptonQue);
+            questions.add(question);
         });
 
 
         IntStream.range(0,10).forEach(it -> {
             String buzzWord = javaBuzzWords[it % javaBuzzWords.length];
             Topic topic = new Topic(TopicType.JAVA, buzzWord, (it % javaBuzzWords.length));
-            SingleOptTypeQuestion singleOptTypeQuestion = new SingleOptTypeQuestion(queBuzzWords[it % queBuzzWords.length], androidBuzzWords[it % ansBuzzWords.length]);
-            topic.addSingleTypeQuestions(singleOptTypeQuestion);
+
+            String queBuzz = queBuzzWords[it % queBuzzWords.length];
+            String ansBuzz = ansBuzzWords[it % ansBuzzWords.length];
+
+            SingleOptonQue singleOptonQue = new SingleOptonQue(queBuzz, ansBuzz);
+            Question question = new Question(QuestionType.SINGLE, singleOptonQue);
+
+            topic.addQuestions(question);
             bunchOfTopic.add(topic);
         });
 
         IntStream.range(0,10).forEach(it -> {
             String buzzWord = androidBuzzWords[it % androidBuzzWords.length];
             Topic topic = new Topic(TopicType.ANDROID, buzzWord, (it % androidBuzzWords.length));
-            SingleOptTypeQuestion singleOptTypeQuestion = new SingleOptTypeQuestion(queBuzzWords[it % queBuzzWords.length], androidBuzzWords[it % ansBuzzWords.length]);
-            topic.addSingleTypeQuestions(singleOptTypeQuestion);
+
+            String queBuzz = queBuzzWords[it % queBuzzWords.length];
+            String ansBuzz = ansBuzzWords[it % ansBuzzWords.length];
+
+            SingleOptonQue singleOptonQue = new SingleOptonQue(queBuzz, ansBuzz);
+            Question question = new Question(QuestionType.SINGLE, singleOptonQue);
+
+            topic.addQuestions(question);
             bunchOfTopic.add(topic);
         });
 
