@@ -1,5 +1,6 @@
 package com.khalid.core;
 
+import com.khalid.question.simple.SingleTypeQuestion;
 import com.khalid.topic.Topic;
 import com.khalid.topic.TopicRepository;
 import com.khalid.user.User;
@@ -51,15 +52,34 @@ public class DatabaseLoader implements ApplicationRunner{
         String[] javaBuzzWords = {"Inner Class", "Exception handling", "Collection", "Generics", "Development", "JVM"};
         String[] androidBuzzWords = {"Activity", "Content Provider", "Services", "Braodcase Reciver", "Fragment"};
 
+
+        String[] queBuzzWords = {"What is inner class", "What is Generics", "What is volatile KeyWord"};
+        String[] ansBuzzWords = {"This  is inner class", "This is Generics", "This is volatile KeyWord"};
+
+        List<SingleTypeQuestion> singleTypeQuestions = new ArrayList<>();
+
+        IntStream.range(0,10).forEach(it -> {
+            String queBuzz = queBuzzWords[it % queBuzzWords.length];
+            String ansBuzz = ansBuzzWords[it % ansBuzzWords.length];
+
+            SingleTypeQuestion singleTypeQuestion = new SingleTypeQuestion(queBuzz, ansBuzz);
+            singleTypeQuestions.add(singleTypeQuestion);
+        });
+
+
         IntStream.range(0,10).forEach(it -> {
             String buzzWord = javaBuzzWords[it % javaBuzzWords.length];
             Topic topic = new Topic(TopicType.JAVA, buzzWord, (it % javaBuzzWords.length));
+            SingleTypeQuestion singleTypeQuestion = new SingleTypeQuestion(queBuzzWords[it % queBuzzWords.length], androidBuzzWords[it % ansBuzzWords.length]);
+            topic.addSingleTypeQuestions(singleTypeQuestion);
             bunchOfTopic.add(topic);
         });
 
         IntStream.range(0,10).forEach(it -> {
             String buzzWord = androidBuzzWords[it % androidBuzzWords.length];
             Topic topic = new Topic(TopicType.ANDROID, buzzWord, (it % androidBuzzWords.length));
+            SingleTypeQuestion singleTypeQuestion = new SingleTypeQuestion(queBuzzWords[it % queBuzzWords.length], androidBuzzWords[it % ansBuzzWords.length]);
+            topic.addSingleTypeQuestions(singleTypeQuestion);
             bunchOfTopic.add(topic);
         });
 

@@ -15,4 +15,8 @@ public abstract class BaseEntitiy {
     protected BaseEntitiy() {
         this.id = null;
     }
+
+    public Long getId() {
+        return id;
+    }
 }

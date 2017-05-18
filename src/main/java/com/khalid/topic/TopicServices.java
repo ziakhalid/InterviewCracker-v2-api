@@ -4,6 +4,7 @@ import com.khalid.core.TopicType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -12,7 +13,7 @@ public class TopicServices {
     @Autowired
     TopicRepository topics;
 
-    public List<Topic> getTopicByType(String topicType){
+    public Collection<Topic> getTopicByType(String topicType){
 
         if(topicType.equalsIgnoreCase("JAVA")){
            return topics.findByTopicType(TopicType.JAVA);
