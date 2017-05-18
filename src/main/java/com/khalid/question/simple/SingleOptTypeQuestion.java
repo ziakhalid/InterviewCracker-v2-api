@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class SingleTypeQuestion extends BaseEntitiy{
+public class SingleOptTypeQuestion extends BaseEntitiy{
 
     private Long questionId;
     private String question;
@@ -15,11 +15,11 @@ public class SingleTypeQuestion extends BaseEntitiy{
     @ManyToOne
     private Topic topic;
 
-    public SingleTypeQuestion() {
+    public SingleOptTypeQuestion() {
         super();
     }
 
-    public SingleTypeQuestion(String question, String solution) {
+    public SingleOptTypeQuestion(String question, String solution) {
         this();
         this.question = question;
         this.solution = solution;

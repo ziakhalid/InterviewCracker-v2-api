@@ -3,7 +3,7 @@ package com.khalid.topic;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.khalid.core.BaseEntitiy;
 import com.khalid.core.TopicType;
-import com.khalid.question.simple.SingleTypeQuestion;
+import com.khalid.question.simple.SingleOptTypeQuestion;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,11 +17,11 @@ public class Topic extends BaseEntitiy{
     private int questionCount;
     @JsonIgnore
     @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
-    private List<SingleTypeQuestion> singleTypeQuestions;
+    private List<SingleOptTypeQuestion> singleOptTypeQuestions;
 
     protected Topic() {
         super();
-        singleTypeQuestions = new ArrayList<>();
+        singleOptTypeQuestions = new ArrayList<>();
     }
 
     public Topic(TopicType topicType, String topicName, int questionCount) {
@@ -55,14 +55,14 @@ public class Topic extends BaseEntitiy{
         this.questionCount = questionCount;
     }
 
-    public List<SingleTypeQuestion> getSingleTypeQuestions() {
-        return singleTypeQuestions;
+    public List<SingleOptTypeQuestion> getSingleOptTypeQuestions() {
+        return singleOptTypeQuestions;
     }
 
 
-    public void addSingleTypeQuestions(SingleTypeQuestion singleTypeQuestion) {
-        singleTypeQuestion.setTopic(this);
-        singleTypeQuestions.add(singleTypeQuestion);
+    public void addSingleTypeQuestions(SingleOptTypeQuestion singleOptTypeQuestion) {
+        singleOptTypeQuestion.setTopic(this);
+        singleOptTypeQuestions.add(singleOptTypeQuestion);
 
     }
 
