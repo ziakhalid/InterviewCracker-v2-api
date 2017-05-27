@@ -2,19 +2,14 @@ package com.khalid.question.simple;
 
 import com.khalid.core.BaseEntitiy;
 import com.khalid.core.QuestionType;
-import com.khalid.topic.Topic;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
 
 @Entity
 public class Question extends BaseEntitiy {
 
     private QuestionType questionType;
-    @OneToOne(cascade = CascadeType.ALL)
-    private SingleOptonQue singleOptionQue;
     private String note;
-    @ManyToOne
-    private Topic topic;
 
     public Question() {
         super();
@@ -26,19 +21,6 @@ public class Question extends BaseEntitiy {
         this.note = note;
     }
 
-    public Question(QuestionType questionType, SingleOptonQue singleOptionQue) {
-        this();
-        this.questionType = questionType;
-        this.singleOptionQue = singleOptionQue;
-    }
-
-    public Topic getTopic() {
-        return topic;
-    }
-
-    public void setTopic(Topic topic) {
-        this.topic = topic;
-    }
 
     public QuestionType getQuestionType() {
         return questionType;
@@ -54,15 +36,6 @@ public class Question extends BaseEntitiy {
 
     public void setNote(String note) {
         this.note = note;
-    }
-
-
-    public SingleOptonQue getSingleOptonQue() {
-        return singleOptionQue;
-    }
-
-    public void setSingleOptonQue(SingleOptonQue singleOptonQue) {
-        this.singleOptionQue = singleOptonQue;
     }
 
 }

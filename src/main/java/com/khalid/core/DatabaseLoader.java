@@ -1,7 +1,6 @@
 package com.khalid.core;
 
 import com.khalid.question.simple.Question;
-import com.khalid.question.simple.SingleOptonQue;
 import com.khalid.topic.Topic;
 import com.khalid.topic.TopicRepository;
 import com.khalid.user.User;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 @Component
 public class DatabaseLoader implements ApplicationRunner{
@@ -59,43 +57,10 @@ public class DatabaseLoader implements ApplicationRunner{
 
         List<Question> questions = new ArrayList<>();
 
-        IntStream.range(0,10).forEach(it -> {
-            String queBuzz = queBuzzWords[it % queBuzzWords.length];
-            String ansBuzz = ansBuzzWords[it % ansBuzzWords.length];
-
-            SingleOptonQue singleOptonQue = new SingleOptonQue(queBuzz, ansBuzz);
-            Question question = new Question(QuestionType.SINGLE, singleOptonQue);
-            questions.add(question);
-        });
-
-
-        IntStream.range(0,10).forEach(it -> {
-            String buzzWord = javaBuzzWords[it % javaBuzzWords.length];
-            Topic topic = new Topic(TopicType.JAVA, buzzWord, (it % javaBuzzWords.length));
-
-            String queBuzz = queBuzzWords[it % queBuzzWords.length];
-            String ansBuzz = ansBuzzWords[it % ansBuzzWords.length];
-
-            SingleOptonQue singleOptonQue = new SingleOptonQue(queBuzz, ansBuzz);
-            Question question = new Question(QuestionType.SINGLE, singleOptonQue);
-
-            topic.addQuestions(question);
-            bunchOfTopic.add(topic);
-        });
-
-        IntStream.range(0,10).forEach(it -> {
-            String buzzWord = androidBuzzWords[it % androidBuzzWords.length];
-            Topic topic = new Topic(TopicType.ANDROID, buzzWord, (it % androidBuzzWords.length));
-
-            String queBuzz = queBuzzWords[it % queBuzzWords.length];
-            String ansBuzz = ansBuzzWords[it % ansBuzzWords.length];
-
-            SingleOptonQue singleOptonQue = new SingleOptonQue(queBuzz, ansBuzz);
-            Question question = new Question(QuestionType.SINGLE, singleOptonQue);
-
-            topic.addQuestions(question);
-            bunchOfTopic.add(topic);
-        });
+        Topic topic1 = new Topic(TopicType.JAVA, "Colletion", 56);
+        Question question = new Question(QuestionType.NOTE, "Here is the note sir");
+        topic1.addQuestions(question);
+        bunchOfTopic.add(topic1);
 
         topics.save(bunchOfTopic);
     }

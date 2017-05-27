@@ -2,6 +2,7 @@ package com.khalid.topic;
 
 import com.google.common.collect.Lists;
 import com.khalid.core.Util;
+import com.khalid.question.simple.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +38,11 @@ public class TopicController {
     @RequestMapping(method = RequestMethod.GET, value = "topicId/{topicId}")
     Topic getTopicById(@PathVariable Long topicId) {
         return Util.findOneById(topicRepository, topicId);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "topicId/{topicId}/questions")
+    Collection<Question> getQuestionsByTopicId(@PathVariable Long topicId) {
+        return Util.findOneById(topicRepository, topicId).getQuestions();
     }
 
     @RequestMapping(method = RequestMethod.POST)

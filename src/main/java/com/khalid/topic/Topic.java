@@ -7,7 +7,7 @@ import com.khalid.question.simple.Question;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 @Entity
 public class Topic extends BaseEntitiy{
@@ -16,8 +16,8 @@ public class Topic extends BaseEntitiy{
     private String topicName;
     private int questionCount;
     @JsonIgnore
-    @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
-    private List<Question> questions;
+    @OneToMany(cascade = CascadeType.ALL)
+    private Collection<Question> questions;
 
     protected Topic() {
         super();
@@ -55,15 +55,12 @@ public class Topic extends BaseEntitiy{
         this.questionCount = questionCount;
     }
 
-    public List<Question> getQuestions() {
+    public Collection<Question> getQuestions() {
         return questions;
     }
 
-
     public void addQuestions(Question question) {
-        question.setTopic(this);
         questions.add(question);
     }
-
 
 }
