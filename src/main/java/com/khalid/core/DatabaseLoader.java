@@ -1,6 +1,7 @@
 package com.khalid.core;
 
 import com.khalid.question.simple.Question;
+import com.khalid.question.simple.SingleOptTypeQue;
 import com.khalid.topic.Topic;
 import com.khalid.topic.TopicRepository;
 import com.khalid.user.User;
@@ -59,7 +60,11 @@ public class DatabaseLoader implements ApplicationRunner{
 
         Topic topic1 = new Topic(TopicType.JAVA, "Colletion", 56);
         Question question = new Question(QuestionType.NOTE, "Here is the note sir");
+        SingleOptTypeQue singleOptTypeQue = new SingleOptTypeQue("Single Opton question ?", "Single Opt Solution");
+        Question question1 = new Question(QuestionType.SINGLE, singleOptTypeQue);
+
         topic1.addQuestions(question);
+        topic1.addQuestions(question1);
         bunchOfTopic.add(topic1);
 
         topics.save(bunchOfTopic);
