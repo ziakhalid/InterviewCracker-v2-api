@@ -16,6 +16,9 @@ public class Question extends BaseEntitiy {
     @OneToOne
     @Cascade(CascadeType.ALL)
     private SingleOptTypeQue singleOptTypeQue;
+    @OneToOne
+    @Cascade(CascadeType.ALL)
+    private MultipleOptTypeQue multipleOptTypeQue;
 
     public Question() {
         super();
@@ -31,6 +34,11 @@ public class Question extends BaseEntitiy {
         this();
         this.questionType = questionType;
         this.singleOptTypeQue = singleOptTypeQue;
+    }
+
+    public Question(QuestionType questionType, MultipleOptTypeQue multipleOptTypeQue) {
+        this.questionType = questionType;
+        this.multipleOptTypeQue = multipleOptTypeQue;
     }
 
     public QuestionType getQuestionType() {
@@ -55,5 +63,13 @@ public class Question extends BaseEntitiy {
 
     public void setSingleOptTypeQue(SingleOptTypeQue singleOptTypeQue) {
         this.singleOptTypeQue = singleOptTypeQue;
+    }
+
+    public MultipleOptTypeQue getMultipleOptTypeQue() {
+        return multipleOptTypeQue;
+    }
+
+    public void setMultipleOptTypeQue(MultipleOptTypeQue multipleOptTypeQue) {
+        this.multipleOptTypeQue = multipleOptTypeQue;
     }
 }

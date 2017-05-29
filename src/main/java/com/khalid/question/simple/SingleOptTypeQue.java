@@ -7,32 +7,32 @@ import javax.persistence.Entity;
 @Entity
 public class SingleOptTypeQue extends BaseEntitiy{
 
-    private String singleOptQue;
-    private String singleOptSolution;
+    private String question;
+    private String solution;
 
     public SingleOptTypeQue() {
         super();
     }
 
-    public SingleOptTypeQue(String singleOptQue, String singleOptSolution) {
+    public SingleOptTypeQue(String question, String solution) {
         this();
-        this.singleOptQue = singleOptQue;
-        this.singleOptSolution = singleOptSolution;
+        this.question = question;
+        this.solution = solution;
     }
 
-    public String getSingleOptQue() {
-        return singleOptQue;
+    public String getQuestion() {
+        return question;
     }
 
-    public void setSingleOptQue(String singleOptQue) {
-        this.singleOptQue = singleOptQue;
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
-    public String getSingleOptSolution() {
-        return singleOptSolution;
+    public String getSolution() {
+        return solution;
     }
 
-    public void setSingleOptSolution(String singleOptSolution) {
-        this.singleOptSolution = singleOptSolution;
+    public void setSolution(String solution) {
+        this.solution = solution;
     }
 }
